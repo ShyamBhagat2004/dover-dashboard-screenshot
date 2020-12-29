@@ -1,13 +1,16 @@
 from selenium import webdriver
-from PIL import Image
+import time
+from selenium.webdriver.firefox.options import Options
+options = Options()
+options.add_argument('--headless')
 
 # take screenshot
-driver = webdriver.Chrome();
-driver.get('https://www.google.com');
-element = driver.find_element_by_id("hplogo");
-location = element.location;
-size = element.size;
-driver.save_screenshot("pageImage.png");
+driver = webdriver.Firefox(options=options)
+driver.set_window_size(1920,1080)
+driver.get('https://share.geckoboard.com/dashboards/WDXKP2FYXSALD5CM')
+time.sleep(8)
+
+driver.save_screenshot("pageImage.png")
 """
 # crop image
 x = location['x'];
